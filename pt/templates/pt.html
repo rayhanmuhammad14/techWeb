@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inovasi Digital Nusantara - Profil Perusahaan</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for minimalist icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Swiper.js for Slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        /* Custom styles to extend Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* Off-white background */
+            color: #212529; /* Dark gray text */
+        }
+        /* Custom color palette */
+        .bg-primary { background-color: #00A7E1; } /* Bright Blue */
+        .bg-accent { background-color: #FF8C42; } /* Vibrant Orange */
+        .text-primary { color: #00A7E1; }
+        .text-accent { color: #FF8C42; }
+        .border-primary { border-color: #00A7E1; }
+        .border-accent { border-color: #FF8C42; }
+
+        /* Animation for sections fading in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Swiper.js Customization */
+        .hero-slider .swiper-slide {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
+        }
+        .slide-content {
+            position: relative; /* Ensure content is above the overlay */
+            z-index: 10;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #FF8C42; /* Accent color for navigation arrows */
+            transition: transform 0.2s ease;
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            transform: scale(1.2);
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #FF8C42 !important; /* Accent color for active pagination dot */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#beranda" id="nav-logo" class="text-2xl font-bold text-white transition-colors duration-300">
+                IDN<span class="text-accent">.</span>
+            </a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#tentang" class="text-white hover:text-primary transition-colors duration-300 nav-link">Tentang Kami</a>
+                
+                <!-- Layanan Dropdown -->
+                <div class="relative">
+                    <button id="layanan-dropdown-toggle" class="text-white hover:text-primary transition-colors duration-300 nav-link flex items-center">
+                        Layanan
+                        <i data-feather="chevron-down" class="ml-1 w-4 h-4"></i>
+                    </button>
+                    <div id="layanan-dropdown-menu" class="absolute hidden bg-white text-gray-700 mt-2 py-2 w-48 rounded-lg shadow-xl">
+                        <a href="{{url_for('it.index')}}" class="block px-4 py-2 hover:bg-gray-100">Pengembangan Software</a>
+                        <a href="#layanan" class="block px-4 py-2 hover:bg-gray-100">Analitik Data</a>
+                        <a href="#layanan" class="block px-4 py-2 hover:bg-gray-100">Keamanan Siber</a>
+                    </div>
+                </div>
+
+                <a href="#mitra" class="text-white hover:text-primary transition-colors duration-300 nav-link">Mitra</a>
+                <a href="#kontak" class="bg-accent hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full transition-colors shadow-lg hover:shadow-orange-400/50">Hubungi Kami</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white transition-colors duration-300">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="#tentang" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Tentang Kami</a>
+            <a href="#layanan" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Layanan</a>
+            <a href="#mitra" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Mitra</a>
+            <a href="#kontak" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Kontak</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Beranda (Hero Section with Slider) -->
+        <section id="beranda" class="h-screen min-h-[700px] w-full">
+            <div class="swiper-container hero-slider h-full">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content container mx-auto px-6 text-center text-white">
+                            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">Mendorong Inovasi Digital</h1>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200 drop-shadow-md">Kami membangun solusi teknologi yang memberdayakan bisnis untuk bertumbuh.</p>
+                            <a href="#layanan" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform duration-300 inline-block transform hover:scale-105 shadow-xl hover:shadow-orange-500/60">Jelajahi Layanan</a>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2232&auto=format&fit=crop');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content container mx-auto px-6 text-center text-white">
+                            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">Solusi Digital Terintegrasi</h1>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200 drop-shadow-md">Dari pengembangan perangkat lunak hingga keamanan siber, kami siap membantu.</p>
+                            <a href="#tentang" class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform duration-300 inline-block transform hover:scale-105 shadow-xl hover:shadow-blue-500/60">Tentang Kami</a>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content container mx-auto px-6 text-center text-white">
+                            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">Kemitraan untuk Sukses</h1>
+                            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200 drop-shadow-md">Tumbuh bersama kami melalui kemitraan strategis yang saling menguntungkan.</p>
+                            <a href="#mitra" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform duration-300 inline-block transform hover:scale-105 shadow-xl hover:shadow-orange-500/60">Lihat Mitra Kami</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <!-- 2. Tentang Perusahaan, Visi Misi, CEO -->
+        <section id="tentang" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <!-- Tentang Perusahaan -->
+                <div class="reveal text-center mb-20">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Tentang <span class="text-primary">Inovasi Digital Nusantara</span></h2>
+                    <p class="max-w-3xl mx-auto text-gray-600 text-lg">
+                        Didirikan pada tahun 2020, Inovasi Digital Nusantara (IDN) lahir dari semangat untuk mengakselerasi transformasi digital di Indonesia. Kami adalah tim ahli yang berdedikasi untuk menciptakan solusi teknologi yang relevan, efisien, dan berdampak positif bagi setiap mitra kami.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                    <!-- Visi & Misi -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary mb-3 flex items-center"><i data-feather="eye" class="mr-3"></i>Visi Kami</h3>
+                            <p class="text-gray-600 text-lg">Menjadi mitra teknologi terdepan yang mendorong pertumbuhan ekonomi digital Indonesia secara inklusif dan berkelanjutan.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-accent mb-3 flex items-center"><i data-feather="target" class="mr-3"></i>Misi Kami</h3>
+                            <ul class="list-none space-y-3 text-gray-600 text-lg">
+                                <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>Menyediakan solusi teknologi inovatif yang disesuaikan dengan kebutuhan klien.</li>
+                                <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>Membangun kemitraan strategis jangka panjang yang saling menguntungkan.</li>
+                                <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-3 mt-1 flex-shrink-0"></i>Mengembangkan talenta digital terbaik untuk kemajuan bangsa.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- CEO Profile -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl text-center">
+                        <img src="https://placehold.co/150x150/FF8C42/FFFFFF?text=CEO" alt="Foto CEO" class="w-36 h-36 rounded-full mx-auto mb-6 ring-4 ring-accent/50">
+                        <h4 class="text-2xl font-bold text-primary">Ahmad Sauki</h4>
+                        <p class="text-gray-500 mb-4">CEO & Founder</p>
+                        <p class="text-gray-600 italic">"Teknologi adalah alat. Tujuan utamanya adalah memberdayakan manusia. Di IDN, kami menggabungkan keduanya untuk menciptakan masa depan yang lebih baik."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Bisnis atau Jasa Perusahaan -->
+        <section id="layanan" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Layanan Unggulan Kami</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 text-lg">Solusi komprehensif untuk menjawab setiap tantangan bisnis Anda.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 reveal">
+                        <div class="bg-primary/10 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-feather="cloud" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pengembangan Perangkat Lunak</h3>
+                        <p class="text-gray-600">Membangun aplikasi web dan mobile kustom yang skalabel, aman, dan sesuai dengan proses bisnis Anda.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 reveal">
+                         <div class="bg-accent/10 text-accent w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-feather="bar-chart-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Analitik Data & BI</h3>
+                        <p class="text-gray-600">Mengubah data mentah menjadi wawasan berharga untuk pengambilan keputusan strategis yang lebih cerdas.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 reveal">
+                         <div class="bg-primary/10 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-feather="shield" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Keamanan Siber</h3>
+                        <p class="text-gray-600">Melindungi aset digital Anda dari ancaman siber dengan audit keamanan, pengujian penetrasi, dan konsultasi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Partner atau Investor -->
+        <section id="mitra" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <div class="reveal mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Dipercaya oleh Para Pemimpin Industri</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 text-lg">Kami bangga dapat berkolaborasi dengan perusahaan dan investor yang berbagi visi yang sama dengan kami.</p>
+                </div>
+                <!-- Partner Logos -->
+                <div class="reveal grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                    <img src="https://placehold.co/200x100/CCCCCC/FFFFFF?text=Partner+A" alt="Logo Partner A" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                    <img src="https://placehold.co/200x100/CCCCCC/FFFFFF?text=Partner+B" alt="Logo Partner B" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                    <img src="https://placehold.co/200x100/CCCCCC/FFFFFF?text=Partner+C" alt="Logo Partner C" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                    <img src="https://placehold.co/200x100/CCCCCC/FFFFFF?text=Partner+D" alt="Logo Partner D" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                    <img src="https://placehold.co/200x100/CCCCCC/FFFFFF?text=Investor+E" alt="Logo Investor E" class="mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Kontak -->
+        <section id="kontak" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Mari Mulai Percakapan</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 text-lg">Punya ide proyek atau ingin tahu lebih banyak tentang kami? Kami siap membantu.</p>
+                </div>
+                <div class="reveal max-w-4xl mx-auto grid md:grid-cols-2 gap-12 bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl">
+                    <!-- Contact Form -->
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Pesan Anda</label>
+                            <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-orange-400/50 transition-all duration-300">
+                                Kirim Pesan
+                            </button>
+                        </div>
+                    </form>
+                    <!-- Contact Info -->
+                    <div class="space-y-6 text-gray-600">
+                        <h3 class="text-xl font-bold text-primary">Informasi Kontak</h3>
+                        <div class="flex items-start space-x-4">
+                            <i data-feather="map-pin" class="w-6 h-6 text-accent mt-1 flex-shrink-0"></i>
+                            <span>IDN Tower, Lantai 25<br>Jl. Inovasi Raya No. 123<br>Jakarta Selatan, 12190</span>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i data-feather="mail" class="w-6 h-6 text-accent mt-1 flex-shrink-0"></i>
+                            <a href="mailto:halo@idn.co.id" class="hover:text-primary">halo@idn.co.id</a>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i data-feather="phone" class="w-6 h-6 text-accent mt-1 flex-shrink-0"></i>
+                            <a href="tel:+6221500123" class="hover:text-primary">(021) 500 123</a>
+                        </div>
+                         <div class="pt-4">
+                            <h3 class="text-xl font-bold text-primary mb-3">Temukan Kami</h3>
+                            <div class="flex space-x-4">
+                               <a href="#" class="text-gray-500 hover:text-primary"><i data-feather="linkedin"></i></a>
+                               <a href="#" class="text-gray-500 hover:text-primary"><i data-feather="instagram"></i></a>
+                               <a href="#" class="text-gray-500 hover:text-primary"><i data-feather="twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <a href="#beranda" class="text-2xl font-bold text-white">
+                IDN<span class="text-accent">.</span>
+            </a>
+            <p class="mt-4 text-gray-400">© 2025 Inovasi Digital Nusantara. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Feather Icons
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a, .container a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(link.closest('#mobile-menu')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Reveal sections on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { // Reveal when 100px from bottom
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Navbar scroll effect
+        const header = document.getElementById('header');
+        const berandaSection = document.getElementById('beranda');
+        const navLogo = document.getElementById('nav-logo');
+        const navLinks = header.querySelectorAll('.nav-link');
+        const mobileBtn = document.getElementById('mobile-menu-button');
+
+        const handleHeaderScroll = () => {
+            const heroBottom = berandaSection.getBoundingClientRect().bottom;
+            const headerHeight = header.offsetHeight;
+
+            if (heroBottom < headerHeight) {
+                header.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-sm');
+                navLogo.classList.remove('text-white');
+                navLogo.classList.add('text-primary');
+                mobileBtn.classList.remove('text-white');
+                mobileBtn.classList.add('text-gray-700');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-600');
+                });
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-sm');
+                navLogo.classList.add('text-white');
+                navLogo.classList.remove('text-primary');
+                mobileBtn.classList.add('text-white');
+                mobileBtn.classList.remove('text-gray-700');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-600');
+                });
+            }
+        };
+
+        window.addEventListener('scroll', handleHeaderScroll);
+        document.addEventListener('DOMContentLoaded', handleHeaderScroll);
+
+        // Layanan Dropdown Toggle
+        const layananToggle = document.getElementById('layanan-dropdown-toggle');
+        const layananMenu = document.getElementById('layanan-dropdown-menu');
+
+        layananToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent this click from being caught by the window listener
+            layananMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!layananMenu.classList.contains('hidden') && !layananToggle.contains(e.target)) {
+                layananMenu.classList.add('hidden');
+            }
+        });
+
+
+        // Initialize Swiper
+        const swiper = new Swiper('.hero-slider', {
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>
