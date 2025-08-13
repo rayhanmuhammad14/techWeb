@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from it.it import it
+from itWeb.it import it
 from pt.pt import pt
 
 app = Flask(__name__)

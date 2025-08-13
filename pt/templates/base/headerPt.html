@@ -1,0 +1,34 @@
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+  <!-- Logo -->
+  <a href="#beranda" id="nav-logo" class="text-2xl font-bold text-white transition-colors duration-300">IDN<span class="text-accent">.</span></a>
+  <!-- Mobile Menu Button -->
+  <button id="mobile-menu-button" class="md:hidden text-white transition-colors duration-300"><i data-feather="menu"></i></button>
+</div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center space-x-8">
+  <a href="#tentang" class="text-white hover:text-primary transition-colors duration-300 nav-link">Tentang Kami</a>
+
+  <!-- Layanan Dropdown -->
+  <div class="relative">
+    <button id="layanan-dropdown-toggle" class="text-white hover:text-primary transition-colors duration-300 nav-link flex items-center">
+      Layanan
+      <i data-feather="chevron-down" class="ml-1 w-4 h-4"></i>
+    </button>
+    <div id="layanan-dropdown-menu" class="absolute hidden bg-white text-gray-700 mt-2 py-2 w-48 rounded-lg shadow-xl">
+      <a href="{{ url_for('it.index') }}" class="block px-4 py-2 hover:bg-gray-100">Pengembangan Software</a>
+      <a href="#layanan" class="block px-4 py-2 hover:bg-gray-100">Analitik Data</a>
+      <a href="#layanan" class="block px-4 py-2 hover:bg-gray-100">Keamanan Siber</a>
+    </div>
+  </div>
+
+  <a href="#mitra" class="text-white hover:text-primary transition-colors duration-300 nav-link">Mitra</a>
+  <a href="#kontak" class="bg-accent hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full transition-colors shadow-lg hover:shadow-orange-400/50">Hubungi Kami</a>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white">
+  <a href="#tentang" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Tentang Kami</a>
+  <a href="#layanan" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Layanan</a>
+  <a href="#mitra" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Mitra</a>
+  <a href="#kontak" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Kontak</a>
+</div>
