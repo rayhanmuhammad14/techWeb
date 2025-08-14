@@ -1,176 +1,175 @@
-{% extends "base/baseProperti.html" %}
+{% extends 'base/baseProperti.html' %}
 {% block content %}
-<main>
-  <!-- Hero Section -->
-  <section class="hero-gradient text-white py-20 md:py-32">
-    <div class="container mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Temukan Properti Impian Anda</h1>
-      <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Platform properti terpercaya untuk jual, beli, dan sewa dengan mudah.</p>
-      <div class="bg-white p-4 rounded-lg shadow-2xl max-w-4xl mx-auto">
-        <div class="flex border-b mb-4">
-          <button id="tab-beli" class="px-6 py-3 font-semibold text-teal-600 border-b-2 border-teal-600">Beli</button>
-          <button id="tab-sewa" class="px-6 py-3 font-semibold text-gray-500">Sewa</button>
-        </div>
-        <form class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-          <div class="md:col-span-2">
-            <div class="relative">
-              <i data-lucide="map-pin" class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
-              <input type="text" placeholder="Masukkan lokasi, area, atau nama proyek..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-800" />
-            </div>
-          </div>
-          <div>
-            <div class="relative">
-              <i data-lucide="building-2" class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
-              <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none text-gray-500">
-                <option>Semua Tipe</option>
-                <option>Rumah</option>
-                <option>Apartemen</option>
-                <option>Ruko</option>
-                <option>Tanah</option>
-              </select>
-              <i data-lucide="chevron-down" class="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
-            </div>
-          </div>
-          <button type="submit" class="w-full bg-teal-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-teal-700 transition-colors flex items-center justify-center"><i data-lucide="search" class="w-5 h-5 mr-2"></i>Cari</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section Listing Pilihan -->
-  <section class="py-16 md:py-24">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Listing Pilihan Untuk Anda</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Properti terbaik dengan harga dan lokasi paling strategis yang kami rekomendasikan.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Property Cards -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden property-card transition-all duration-300">
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rumah Modern" class="w-full h-56 object-cover" /><span class="absolute top-4 left-4 bg-teal-600 text-white text-sm font-semibold px-3 py-1 rounded-full">DIJUAL</span>
-          </div>
-          <div class="p-6">
-            <p class="text-xl font-bold text-teal-700 mb-2">Rp 2.5 Miliar</p><h3 class="text-lg font-semibold mb-2 truncate">Rumah Modern Minimalis di Pondok Indah</h3><p class="text-gray-600 text-sm mb-4 truncate">
-              <i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1"></i>Jakarta Selatan
-            </p>
-            <div class="flex justify-between text-gray-600 border-t pt-4">
-              <span class="flex items-center"><i data-lucide="bed-double" class="w-5 h-5 mr-2 text-teal-500"></i> 4 K. Tidur</span><span class="flex items-center"><i data-lucide="bath" class="w-5 h-5 mr-2 text-teal-500"></i> 3 K. Mandi</span><span class="flex items-center"><i data-lucide="ruler" class="w-5 h-5 mr-2 text-teal-500"></i> 250 m²</span>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden property-card transition-all duration-300">
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Apartemen Mewah" class="w-full h-56 object-cover" /><span class="absolute top-4 left-4 bg-green-600 text-white text-sm font-semibold px-3 py-1 rounded-full">DISEWA</span>
-          </div>
-          <div class="p-6">
-            <p class="text-xl font-bold text-green-700 mb-2">Rp 120 Juta / tahun</p><h3 class="text-lg font-semibold mb-2 truncate">Apartemen Mewah di SCBD</h3><p class="text-gray-600 text-sm mb-4 truncate">
-              <i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1"></i>Jakarta Pusat
-            </p>
-            <div class="flex justify-between text-gray-600 border-t pt-4">
-              <span class="flex items-center"><i data-lucide="bed-double" class="w-5 h-5 mr-2 text-green-500"></i> 2 K. Tidur</span><span class="flex items-center"><i data-lucide="bath" class="w-5 h-5 mr-2 text-green-500"></i> 2 K. Mandi</span><span class="flex items-center"><i data-lucide="ruler" class="w-5 h-5 mr-2 text-green-500"></i> 95 m²</span>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden property-card transition-all duration-300">
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Villa di Bali" class="w-full h-56 object-cover" /><span class="absolute top-4 left-4 bg-teal-600 text-white text-sm font-semibold px-3 py-1 rounded-full">DIJUAL</span>
-          </div>
-          <div class="p-6">
-            <p class="text-xl font-bold text-teal-700 mb-2">Rp 5 Miliar</p><h3 class="text-lg font-semibold mb-2 truncate">Villa Tropis dengan Pemandangan Sawah</h3><p class="text-gray-600 text-sm mb-4 truncate">
-              <i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1"></i>Canggu, Bali
-            </p>
-            <div class="flex justify-between text-gray-600 border-t pt-4">
-              <span class="flex items-center"><i data-lucide="bed-double" class="w-5 h-5 mr-2 text-teal-500"></i> 5 K. Tidur</span><span class="flex items-center"><i data-lucide="bath" class="w-5 h-5 mr-2 text-teal-500"></i> 5 K. Mandi</span><span class="flex items-center"><i data-lucide="ruler" class="w-5 h-5 mr-2 text-teal-500"></i> 600 m²</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-12">
-        <a href="#" class="bg-white border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-teal-600 hover:text-white transition-colors">Lihat Semua Properti</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section Tim Kami -->
-  <section class="bg-white py-16 md:py-24">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Tim Profesional Kami</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Bertemu dengan para ahli di balik PropertiImpian yang siap membantu Anda.</p>
-      <!-- Swiper -->
-      <div class="swiper-container team-slider">
+  <main>
+    <section class="hero-section text-white py-20 md:py-32">
+      <div class="swiper-container hero-slider">
         <div class="swiper-wrapper">
-          <!-- Slide 1 -->
-          <div class="swiper-slide text-center p-4">
-            <img src="https://placehold.co/200x200/e2e8f0/4a5568?text=Foto" alt="Foto Tim 1" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-            <h4 class="font-bold text-lg">Budi Santoso</h4>
-            <p class="text-gray-500">CEO & Founder</p>
+          <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2070&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
           </div>
-          <!-- Slide 2 -->
-          <div class="swiper-slide text-center p-4">
-            <img src="https://placehold.co/200x200/e2e8f0/4a5568?text=Foto" alt="Foto Tim 2" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-            <h4 class="font-bold text-lg">Citra Lestari</h4>
-            <p class="text-gray-500">Head of Marketing</p>
+          <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
           </div>
-          <!-- Slide 3 -->
-          <div class="swiper-slide text-center p-4">
-            <img src="https://placehold.co/200x200/e2e8f0/4a5568?text=Foto" alt="Foto Tim 3" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-            <h4 class="font-bold text-lg">Agus Wijaya</h4>
-            <p class="text-gray-500">Chief Technology Officer</p>
-          </div>
-          <!-- Slide 4 -->
-          <div class="swiper-slide text-center p-4">
-            <img src="https://placehold.co/200x200/e2e8f0/4a5568?text=Foto" alt="Foto Tim 4" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-            <h4 class="font-bold text-lg">Dewi Anggraini</h4>
-            <p class="text-gray-500">Lead Product Manager</p>
-          </div>
-          <!-- Slide 5 -->
-          <div class="swiper-slide text-center p-4">
-            <img src="https://placehold.co/200x200/e2e8f0/4a5568?text=Foto" alt="Foto Tim 5" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-            <h4 class="font-bold text-lg">Rian Hidayat</h4>
-            <p class="text-gray-500">Head of Sales</p>
+          <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop');">
+            <div class="slide-overlay"></div>
           </div>
         </div>
-        <!-- Add Navigation -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
       </div>
-    </div>
-  </section>
+      <div class="hero-content container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Temukan Properti Impian Anda</h1>
+        <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Platform properti terpercaya untuk jual, beli, dan sewa dengan mudah.</p>
+        <div class="bg-white p-4 rounded-lg shadow-2xl max-w-4xl mx-auto">
+          <div class="flex border-b mb-4">
+            <button id="tab-beli" class="px-6 py-3 font-semibold text-teal-600 border-b-2 border-teal-600">Beli</button>
+            <button id="tab-sewa" class="px-6 py-3 font-semibold text-gray-500">Sewa</button>
+          </div>
+          <form class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            <div class="md:col-span-2">
+              <div class="relative">
+                <i data-lucide="map-pin" class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400 w-5 h-5"></i><input type="text" placeholder="Masukkan lokasi..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-800" />
+              </div>
+            </div>
+            <div>
+              <div class="relative">
+                <i data-lucide="building-2" class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400 w-5 h-5"></i><select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none text-gray-500">
+                  <option>Semua Tipe</option>
+                  <option>Rumah</option>
+                  <option>Apartemen</option>
+                </select><i data-lucide="chevron-down" class="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+              </div>
+            </div>
+            <button type="submit" class="w-full bg-teal-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-teal-700 transition-colors flex items-center justify-center"><i data-lucide="search" class="w-5 h-5 mr-2"></i>Cari</button>
+          </form>
+        </div>
+      </div>
+    </section>
 
-  <!-- Section Mitra Kami -->
-  <section class="py-16 md:py-24">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Dipercaya oleh Mitra Ternama</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Kami bekerja sama dengan developer dan bank terkemuka di Indonesia.</p>
-      <!-- Swiper -->
-      <div class="swiper-container partner-slider">
-        <div class="swiper-wrapper flex items-center">
-          <!-- Slide 1 -->
-          <div class="swiper-slide text-center">
-            <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+1" alt="Logo Mitra 1" class="mx-auto partner-logo" />
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Listing Pilihan Untuk Anda</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Properti terbaik dengan harga dan lokasi paling strategis yang kami rekomendasikan.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden property-card transition-all duration-300">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Rumah Modern" class="w-full h-56 object-cover" /><span class="absolute top-4 left-4 bg-teal-600 text-white text-sm font-semibold px-3 py-1 rounded-full">DIJUAL</span>
+            </div>
+            <div class="p-6">
+              <p class="text-xl font-bold text-teal-700 mb-2">Rp 2.5 Miliar</p><h3 class="text-lg font-semibold mb-2 truncate">Rumah Modern Minimalis di Pondok Indah</h3><p class="text-gray-600 text-sm mb-4 truncate">
+                <i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1"></i>Jakarta Selatan
+              </p>
+              <div class="flex justify-between text-gray-600 border-t pt-4">
+                <span class="flex items-center"><i data-lucide="bed-double" class="w-5 h-5 mr-2 text-teal-500"></i> 4</span><span class="flex items-center"><i data-lucide="bath" class="w-5 h-5 mr-2 text-teal-500"></i> 3</span><span class="flex items-center"><i data-lucide="ruler" class="w-5 h-5 mr-2 text-teal-500"></i> 250 m²</span>
+              </div>
+            </div>
           </div>
-          <!-- Slide 2 -->
-          <div class="swiper-slide text-center">
-            <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+2" alt="Logo Mitra 2" class="mx-auto partner-logo" />
+          <div class="bg-white rounded-lg shadow-md overflow-hidden property-card transition-all duration-300">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" alt="Apartemen Mewah" class="w-full h-56 object-cover" /><span class="absolute top-4 left-4 bg-green-600 text-white text-sm font-semibold px-3 py-1 rounded-full">DISEWA</span>
+            </div>
+            <div class="p-6">
+              <p class="text-xl font-bold text-green-700 mb-2">Rp 120 Juta / tahun</p><h3 class="text-lg font-semibold mb-2 truncate">Apartemen Mewah di SCBD</h3><p class="text-gray-600 text-sm mb-4 truncate">
+                <i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1"></i>Jakarta Pusat
+              </p>
+              <div class="flex justify-between text-gray-600 border-t pt-4">
+                <span class="flex items-center"><i data-lucide="bed-double" class="w-5 h-5 mr-2 text-green-500"></i> 2</span><span class="flex items-center"><i data-lucide="bath" class="w-5 h-5 mr-2 text-green-500"></i> 2</span><span class="flex items-center"><i data-lucide="ruler" class="w-5 h-5 mr-2 text-green-500"></i> 95 m²</span>
+              </div>
+            </div>
           </div>
-          <!-- Slide 3 -->
-          <div class="swiper-slide text-center">
-            <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+3" alt="Logo Mitra 3" class="mx-auto partner-logo" />
+          <div class="bg-white rounded-lg shadow-md overflow-hidden property-card transition-all duration-300">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop" alt="Villa di Bali" class="w-full h-56 object-cover" /><span class="absolute top-4 left-4 bg-teal-600 text-white text-sm font-semibold px-3 py-1 rounded-full">DIJUAL</span>
+            </div>
+            <div class="p-6">
+              <p class="text-xl font-bold text-teal-700 mb-2">Rp 5 Miliar</p><h3 class="text-lg font-semibold mb-2 truncate">Villa Tropis dengan Pemandangan Sawah</h3><p class="text-gray-600 text-sm mb-4 truncate">
+                <i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1"></i>Canggu, Bali
+              </p>
+              <div class="flex justify-between text-gray-600 border-t pt-4">
+                <span class="flex items-center"><i data-lucide="bed-double" class="w-5 h-5 mr-2 text-teal-500"></i> 5</span><span class="flex items-center"><i data-lucide="bath" class="w-5 h-5 mr-2 text-teal-500"></i> 5</span><span class="flex items-center"><i data-lucide="ruler" class="w-5 h-5 mr-2 text-teal-500"></i> 600 m²</span>
+              </div>
+            </div>
           </div>
-          <!-- Slide 4 -->
-          <div class="swiper-slide text-center">
-            <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+4" alt="Logo Mitra 4" class="mx-auto partner-logo" />
+        </div>
+        <div class="text-center mt-12">
+          <a href="#" class="bg-white border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-teal-600 hover:text-white transition-colors">Lihat Semua Properti</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tim" class="bg-white py-16 md:py-24">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Tim Profesional Kami</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Bertemu dengan para ahli di balik PropertiImpian yang siap membantu Anda.</p>
+        <div class="swiper-container team-slider relative">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide p-4">
+              <div class="bg-gray-50 rounded-lg p-6 text-center">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Foto Tim 1" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg ring-4 ring-teal-500/20" />
+                <h4 class="font-bold text-lg text-gray-800">Alya Putri</h4>
+                <p class="text-teal-600 font-medium">Project Manager</p>
+              </div>
+            </div>
+            <div class="swiper-slide p-4">
+              <div class="bg-gray-50 rounded-lg p-6 text-center">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026703d" alt="Foto Tim 2" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg ring-4 ring-teal-500/20" />
+                <h4 class="font-bold text-lg text-gray-800">Bima Sakti</h4>
+                <p class="text-teal-600 font-medium">Lead Developer</p>
+              </div>
+            </div>
+            <div class="swiper-slide p-4">
+              <div class="bg-gray-50 rounded-lg p-6 text-center">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026705d" alt="Foto Tim 3" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg ring-4 ring-teal-500/20" />
+                <h4 class="font-bold text-lg text-gray-800">Candra Kirana</h4>
+                <p class="text-teal-600 font-medium">UI/UX Designer</p>
+              </div>
+            </div>
+            <div class="swiper-slide p-4">
+              <div class="bg-gray-50 rounded-lg p-6 text-center">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026706d" alt="Foto Tim 4" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg ring-4 ring-teal-500/20" />
+                <h4 class="font-bold text-lg text-gray-800">Dewi Lestari</h4>
+                <p class="text-teal-600 font-medium">Marketing Specialist</p>
+              </div>
+            </div>
+            <div class="swiper-slide p-4">
+              <div class="bg-gray-50 rounded-lg p-6 text-center">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026707d" alt="Foto Tim 5" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg ring-4 ring-teal-500/20" />
+                <h4 class="font-bold text-lg text-gray-800">Rian Hidayat</h4>
+                <p class="text-teal-600 font-medium">Head of Sales</p>
+              </div>
+            </div>
           </div>
-          <!-- Slide 5 -->
-          <div class="swiper-slide text-center">
-            <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+5" alt="Logo Mitra 5" class="mx-auto partner-logo" />
-          </div>
-          <!-- Slide 6 -->
-          <div class="swiper-slide text-center">
-            <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+6" alt="Logo Mitra 6" class="mx-auto partner-logo" />
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Dipercaya oleh Mitra Ternama</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Kami bekerja sama dengan developer dan bank terkemuka di Indonesia.</p>
+        <div class="swiper-container partner-slider">
+          <div class="swiper-wrapper flex items-center">
+            <div class="swiper-slide text-center">
+              <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+1" alt="Logo Mitra 1" class="mx-auto partner-logo" />
+            </div>
+            <div class="swiper-slide text-center">
+              <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+2" alt="Logo Mitra 2" class="mx-auto partner-logo" />
+            </div>
+            <div class="swiper-slide text-center">
+              <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+3" alt="Logo Mitra 3" class="mx-auto partner-logo" />
+            </div>
+            <div class="swiper-slide text-center">
+              <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+4" alt="Logo Mitra 4" class="mx-auto partner-logo" />
+            </div>
+            <div class="swiper-slide text-center">
+              <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+5" alt="Logo Mitra 5" class="mx-auto partner-logo" />
+            </div>
+            <div class="swiper-slide text-center">
+              <img src="https://placehold.co/200x100/f1f5f9/94a3b8?text=MITRA+6" alt="Logo Mitra 6" class="mx-auto partner-logo" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
-{% endblock content %}
+    </section>
+  </main>
+{% endblock %}
