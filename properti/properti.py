@@ -5,4 +5,4 @@ properti = Blueprint('properti',__name__,static_folder='static',
 
 @properti.route('/')
 def index():
-    return "OKE"
+    return render_template('properti.html')
