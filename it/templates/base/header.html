@@ -1,11 +1,8 @@
-<!-- Header / Navigation Bar -->
 <header id="header" class="bg-slate-900/70 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="#" class="text-2xl font-bold text-white">Digitize<span class="text-cyan-400">.</span></a>
+      <a href="/it" class="text-2xl font-bold text-white"><img src="{{ url_for('it.static', filename='img/Logo.png') }}" alt="" height="100px" width="150px" /></a>
 
-      <!-- Navigation Links (Desktop) -->
       <nav class="hidden md:flex items-center space-x-8">
         <a href="#hero" class="text-slate-300 hover:text-cyan-400 transition">Beranda</a>
         <a href="#layanan" class="text-slate-300 hover:text-cyan-400 transition">Layanan</a>
@@ -13,10 +10,8 @@
         <a href="#tentang" class="text-slate-300 hover:text-cyan-400 transition">Tentang Kami</a>
       </nav>
 
-      <!-- CTA Button (Desktop) -->
       <a href="#kontak" class="hidden md:inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40">Hubungi Kami</a>
 
-      <!-- Mobile Menu Button -->
       <button id="mobile-menu-button" class="md:hidden text-slate-300">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -25,7 +20,6 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95">
     <nav class="px-4 pt-2 pb-4 space-y-2">
       <a href="#hero" class="block text-slate-300 hover:text-cyan-400 transition py-2">Beranda</a>
