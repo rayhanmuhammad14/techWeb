@@ -24,3 +24,26 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(element);
     });
 });
+
+ // Simpan dropdown yang sedang terbuka
+  let openDropdown = null;
+
+  function toggleDropdown(cardId) {
+    const card = document.getElementById(cardId);
+    const content = card.querySelector('.team-dropdown-content');
+
+    // Jika ada dropdown lain yang terbuka dan itu bukan yang ini, tutup dulu
+    if (openDropdown && openDropdown !== content) {
+      openDropdown.classList.remove('show');
+    }
+
+    // Toggle (buka/tutup) dropdown yang diklik
+    content.classList.toggle('show');
+
+    // Perbarui status dropdown yang sedang terbuka
+    if (content.classList.contains('show')) {
+      openDropdown = content; // Set sebagai yang sedang terbuka
+    } else {
+      openDropdown = null; // Tidak ada yang terbuka
+    }
+  }

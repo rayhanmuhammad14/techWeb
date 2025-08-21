@@ -48,3 +48,19 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    .team-dropdown-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .team-dropdown-content.show {
+        max-height: 200px;
+        /* Atur tinggi maksimal sesuai konten Anda */
+        padding-top: 1rem;
+        /* 16px */
+        transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+    }
