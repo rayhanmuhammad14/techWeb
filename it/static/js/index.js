@@ -1,49 +1,60 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Pilih semua elemen yang ingin dianimasikan
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    // === Logika Menu Mobile (Hamburger) ===
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    // Buat observer baru
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // === Efek Scroll pada Header ===
+    const header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    }
+
+    // === Animasi Scroll (Kode Anda yang sudah ada) ===
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
-        // Loop melalui setiap elemen yang diamati
         entries.forEach(entry => {
-            // Jika elemen masuk ke dalam viewport
             if (entry.isIntersecting) {
-                // Tambahkan kelas 'is-visible' untuk memicu animasi
                 entry.target.classList.add('is-visible');
             }
         });
     }, {
-        // Opsi: Tentukan seberapa banyak bagian dari elemen yang harus terlihat
-        // sebelum animasi dipicu. 0.1 berarti 10%.
         threshold: 0.1
     });
 
-    // Minta observer untuk mengamati setiap elemen yang telah dipilih
     animatedElements.forEach(element => {
         observer.observe(element);
     });
 });
 
- // Simpan dropdown yang sedang terbuka
-  let openDropdown = null;
+// === Fungsi Dropdown Tim (Kode Anda yang sudah ada) ===
+// Biarkan fungsi ini di luar agar bisa diakses secara global jika dipanggil dari HTML
+let openDropdown = null;
 
-  function toggleDropdown(cardId) {
+function toggleDropdown(cardId) {
     const card = document.getElementById(cardId);
     const content = card.querySelector('.team-dropdown-content');
 
-    // Jika ada dropdown lain yang terbuka dan itu bukan yang ini, tutup dulu
     if (openDropdown && openDropdown !== content) {
-      openDropdown.classList.remove('show');
+        openDropdown.classList.remove('show');
     }
 
-    // Toggle (buka/tutup) dropdown yang diklik
     content.classList.toggle('show');
 
-    // Perbarui status dropdown yang sedang terbuka
     if (content.classList.contains('show')) {
-      openDropdown = content; // Set sebagai yang sedang terbuka
+        openDropdown = content;
     } else {
-      openDropdown = null; // Tidak ada yang terbuka
+        openDropdown = null;
     }
-  }
+}

@@ -1,65 +1,105 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Properti Impian - Temukan Rumah & Apartemen Idaman Anda</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{{url_for('properti.static', filename='css/indexProperti.css')}}">
-</head>
-<body class="text-gray-800">
-
+    <link rel="stylesheet" href="{{ url_for('properti.static', filename='css/indexProperti.css') }}" />
+  </head>
+  <body class="text-gray-800">
     <!-- Header / Navigasi -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-teal-600">
-                <i data-lucide="home" class="inline-block mr-2"></i>PropertiImpian
-            </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Beli</a>
-                <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Sewa</a>
-                <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Agen</a>
-                <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Panduan</a>
-            </div>
-            <a href="#" class="hidden md:block bg-teal-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
-                + Pasang Iklan
-            </a>
-            <button class="md:hidden" id="mobile-menu-button">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </nav>
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-teal-600"><i data-lucide="home" class="inline-block mr-2"></i>PropertiImpian</a>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Beli</a>
+          <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Sewa</a>
+          <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Agen</a>
+          <a href="#" class="text-gray-600 hover:text-teal-600 font-medium">Panduan</a>
+        </div>
+        <a href="#" class="hidden md:block bg-teal-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-teal-700 transition-colors">+ Pasang Iklan</a>
+        <button class="md:hidden" id="mobile-menu-button"><i data-lucide="menu" class="w-6 h-6"></i></button>
+      </nav>
+
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Beli</a>
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Sewa</a>
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Agen</a>
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Panduan</a>
+          <a href="#" class="block w-full text-center mt-4 bg-teal-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-teal-700 transition-colors">+ Pasang Iklan</a>
+        </div>
+      </div>
     </header>
 
-    {% block content %}{% endblock content %}
+    {% block content %}
+    {% endblock %}
 
     <!-- Footer -->
     <footer class="bg-gray-100 text-gray-800 border-t">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-1"><h3 class="text-xl font-bold mb-4 text-teal-600 flex items-center"><i data-lucide="home" class="inline-block mr-2"></i>PropertiImpian</h3><p class="text-gray-600">Platform properti terdepan di Indonesia. Membantu Anda menemukan rumah idaman.</p></div>
-                <div><h4 class="font-semibold mb-4">Jelajahi</h4><ul><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Properti Dijual</a></li><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Properti Disewa</a></li><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Proyek Baru</a></li><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Direktori Agen</a></li></ul></div>
-                <div><h4 class="font-semibold mb-4">Perusahaan</h4><ul><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Tentang Kami</a></li><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Hubungi Kami</a></li><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Karir</a></li><li class="mb-2"><a href="#" class="text-gray-600 hover:text-teal-600">Kebijakan Privasi</a></li></ul></div>
-                <div><h4 class="font-semibold mb-4">Ikuti Kami</h4><div class="flex space-x-4"><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="facebook"></i></a><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="instagram"></i></a><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="twitter"></i></a><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="linkedin"></i></a></div></div>
+      <div class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="lg:col-span-1">
+            <h3 class="text-xl font-bold mb-4 text-teal-600 flex items-center"><i data-lucide="home" class="inline-block mr-2"></i>PropertiImpian</h3><p class="text-gray-600">Platform properti terdepan di Indonesia. Membantu Anda menemukan rumah idaman.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Jelajahi</h4><ul>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Properti Dijual</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Properti Disewa</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Proyek Baru</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Direktori Agen</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Perusahaan</h4><ul>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Tentang Kami</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Hubungi Kami</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Karir</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-gray-600 hover:text-teal-600">Kebijakan Privasi</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Ikuti Kami</h4><div class="flex space-x-4">
+              <a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="facebook"></i></a><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="instagram"></i></a><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="twitter"></i></a><a href="#" class="text-gray-500 hover:text-teal-600"><i data-lucide="linkedin"></i></a>
             </div>
-            <div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500 text-sm">&copy; 2024 PropertiImpian. Semua Hak Cipta Dilindungi.</div>
+          </div>
         </div>
+        <div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500 text-sm">&copy; 2024 PropertiImpian. Semua Hak Cipta Dilindungi.</div>
+      </div>
     </footer>
 
     <!-- Swiper.js JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="{{url_for('properti.static', filename='js/indexProperti.js')}}"></script>
-</body>
+    <script src="{{ url_for('properti.static', filename='js/indexProperti.js') }}"></script>
+  </body>
 </html>
