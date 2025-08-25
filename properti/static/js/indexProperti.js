@@ -1,12 +1,13 @@
 // Panggil fungsi ini sekali di awal untuk merender semua ikon
 lucide.createIcons();
 
-// --- Logika Menu Mobile (Hamburger) ---
+// --- Logika Menu Mobile (Hamburger) dengan Animasi ---
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
+        // Menggunakan .toggle('active') untuk memicu animasi CSS
+        mobileMenu.classList.toggle('active');
     });
 }
 
