@@ -48,16 +48,32 @@
         <button id="mobile-menu-button" class="md:hidden text-white transition-colors duration-300"><i data-feather="menu" class="w-7 h-7"></i></button>
       </div>
 
-      <div id="mobile-menu" class="hidden md:hidden bg-white">
-        <a href="#tentang" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Tentang Kami</a>
-        <a href="#layanan" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Layanan</a>
-        <a href="#mitra" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Mitra</a>
-        <a href="#kontak" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Kontak</a>
-      </div>
+     <div id="mobile-menu" class="hidden md:hidden bg-white">
+    <a href="#tentang" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Tentang Kami</a>
+    
+    <div>
+        <button id="layanan-mobile-toggle" class="w-full flex justify-between items-center py-3 px-6 text-gray-600 hover:bg-gray-100 text-left">
+            <span>Layanan</span>
+            <i data-feather="chevron-down" class="w-4 h-4"></i>
+        </button>
+        <div id="layanan-mobile-menu" class="hidden pl-8 bg-gray-50">
+            <a href="it" class="block py-2 px-4 text-sm text-gray-500 hover:bg-gray-200">IT Solution</a>
+            <a href="properti" class="block py-2 px-4 text-sm text-gray-500 hover:bg-gray-200">Properti</a>
+            <a href="/comingSoon/konstruksi" class="block py-2 px-4 text-sm text-gray-500 hover:bg-gray-200">Konstruksi</a>
+            <a href="/comingSoon/PengadaanBarangDanJasa" class="block py-2 px-4 text-sm text-gray-500 hover:bg-gray-200">Pengadaan Barang dan Jasa</a>
+            <a href="/comingSoon/HasilBumi" class="block py-2 px-4 text-sm text-gray-500 hover:bg-gray-200">Hasil Bumi</a>
+            <a href="/comingSoon/EksporDanImpor" class="block py-2 px-4 text-sm text-gray-500 hover:bg-gray-200">Ekspor Dan Impor</a>
+        </div>
+    </div>
+
+    <a href="#mitra" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Mitra</a>
+    <a href="#kontak" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Kontak</a>
+</div>
     </header>
 
     {% block content %}
-    {% endblock %}
+
+    {% endblock content %}
 
     <footer class="bg-gray-900 text-gray-300">
       <div class="container mx-auto px-6 py-16">
@@ -109,6 +125,6 @@
       </div>
     </footer>
 
-   <script src="{{url_for('pt.static', filename='js/pt.js')}}"></script>
+    <script src="{{url_for('pt.static', filename='js/pt.js')}}"></script>
   </body>
 </html>
