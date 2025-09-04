@@ -64,3 +64,22 @@
         /* 16px */
         transition: max-height 0.5s ease-in, padding 0.5s ease-in;
     }
+
+    .team-card .flex-grow {
+        text-align: center;
+    }
+
+    @media (min-width: 1024px) {
+        #tim .grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            /* Menyesuaikan jarak antar kartu */
+        }
+
+        #tim .team-card {
+            flex-basis: 30%;
+            /* Mengatur lebar kartu agar tidak terlalu besar */
+            max-width: 320px;
+        }
+    }
