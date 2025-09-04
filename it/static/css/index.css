@@ -76,10 +76,11 @@
             gap: 2rem;
             /* Menyesuaikan jarak antar kartu */
         }
+    }
 
-        #tim .team-card {
-            flex-basis: 30%;
-            /* Mengatur lebar kartu agar tidak terlalu besar */
-            max-width: 320px;
-        }
+    #tim .team-card img {
+        width: 148px;
+        /* Setara dengan w-32 di Tailwind */
+        height: 168px;
+        /* Setara dengan h-32 di Tailwind */
     }
