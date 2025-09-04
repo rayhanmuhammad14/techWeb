@@ -1,16 +1,78 @@
+// ==========================================================
+// BAGIAN GLOBAL: Fungsi yang dipanggil langsung dari HTML
+// ==========================================================
+
+// Variabel untuk melacak dropdown tim yang sedang terbuka
+let openDropdown = null;
+
+// Fungsi untuk membuka/menutup dropdown tim
+function toggleDropdown(cardId) {
+    const card = document.getElementById(cardId);
+    const content = card.querySelector('.team-dropdown-content');
+
+    // Jika yang diklik adalah dropdown yang sudah terbuka, tutup saja
+    const isAlreadyOpen = (openDropdown === content);
+
+    // Selalu tutup dropdown yang mungkin sedang terbuka
+    if (openDropdown) {
+        openDropdown.classList.remove('show');
+    }
+
+    // Jika yang diklik tadi belum terbuka, buka sekarang
+    if (!isAlreadyOpen) {
+        content.classList.add('show');
+        openDropdown = content;
+    } else {
+        // Jika yang diklik adalah yang sudah terbuka, reset statusnya
+        openDropdown = null;
+    }
+}
+
+
+// ==========================================================
+// BAGIAN UTAMA: Dijalankan setelah HTML selesai dimuat
+// ==========================================================
 document.addEventListener("DOMContentLoaded", function () {
-    // === Logika Menu Mobile (Hamburger) ===
+
+    // --- Referensi Elemen Penting ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const header = document.getElementById('header');
 
+    // --- Logika untuk Tombol Hamburger ---
+    // Logika ini HANYA untuk membuka/menutup saat tombolnya diklik
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', function () {
             mobileMenu.classList.toggle('hidden');
         });
     }
 
-    // === Efek Scroll pada Header ===
-    const header = document.getElementById('header');
+    // --- [PERBAIKAN UTAMA] Listener klik global untuk menutup navbar DAN dropdown tim ---
+    document.addEventListener('click', function (event) {
+        // 1. Logika untuk menutup NAVBAR MOBILE
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            // Cek apakah klik terjadi di luar menu DAN bukan pada tombol hamburger itu sendiri
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnButton = mobileMenuButton.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnButton) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // 2. Logika untuk menutup DROPDOWN TIM
+        if (openDropdown) {
+            const activeCard = openDropdown.closest('.team-card');
+            // Cek apakah klik terjadi di luar kartu tim yang aktif
+            if (activeCard && !activeCard.contains(event.target)) {
+                openDropdown.classList.remove('show');
+                openDropdown = null;
+            }
+        }
+    });
+
+
+    // --- Efek Scroll pada Header ---
     if (header) {
         window.addEventListener('scroll', function () {
             if (window.scrollY > 10) {
@@ -21,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Animasi Scroll (Kode Anda yang sudah ada) ===
+    // --- Animasi Scroll ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -36,25 +98,5 @@ document.addEventListener("DOMContentLoaded", function () {
     animatedElements.forEach(element => {
         observer.observe(element);
     });
+
 });
-
-// === Fungsi Dropdown Tim (Kode Anda yang sudah ada) ===
-// Biarkan fungsi ini di luar agar bisa diakses secara global jika dipanggil dari HTML
-let openDropdown = null;
-
-function toggleDropdown(cardId) {
-    const card = document.getElementById(cardId);
-    const content = card.querySelector('.team-dropdown-content');
-
-    if (openDropdown && openDropdown !== content) {
-        openDropdown.classList.remove('show');
-    }
-
-    content.classList.toggle('show');
-
-    if (content.classList.contains('show')) {
-        openDropdown = content;
-    } else {
-        openDropdown = null;
-    }
-}
